@@ -1,6 +1,9 @@
 import cv2
 import numpy as np
 
+import platform
+import time
+
 #read the image
 small = 0
 big = 0
@@ -16,7 +19,7 @@ _, threshold = cv2.threshold(gray_scale, 50, 255, cv2.THRESH_BINARY)
 
 #detect the contours
 
-_, contours, _ = cv2.findContours(threshold, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+contours, hierarchy = cv2.findContours(threshold, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 for cnt in contours:
 
     (x, y, w, h) = cv2.boundingRect(cnt)
